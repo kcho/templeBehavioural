@@ -50,8 +50,8 @@ def tables2Df(tables):
         # pivot table
         pivotTable = pd.pivot_table(dfIndexReset,
                                     values=['ACC','RT'],
-                                    cols=['Run'],
-                                    rows=['subjectName','timeline','Detail'],
+                                    columns=['Run'],
+                                    index=['subjectName','timeline','Detail'],
                                     aggfunc=np.sum)
 
         # column name set
@@ -187,7 +187,8 @@ if __name__=='__main__':
                         eg) {codeName} --dir /Users/kevin/NOR04_CKI
                         eg) {codeName} --dir /Users/kevin/NOR04_CKI
                     '''.format(codeName=os.path.basename(__file__))))
-    parser.add_argument('-dir','--directory',help='Data directory location', default=os.getcwd())
+    parser.add_argument('-dir','--directory',help='Data directory location',
+            default='/Volumes/promise/CCNC_SNU_temple_2014/2_data')
     args = parser.parse_args()
     main(args)
 
